@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
+import { Analytics } from '@vercel/analytics/react';
 import type { Stage } from './types';
 import { AtmosphericCanvas } from './components/AtmosphericCanvas';
 import { JourneyHUD } from './components/JourneyHUD';
@@ -196,6 +197,9 @@ export default function App() {
           </p>
         </div>
       </footer>
+
+      {/* Vercel Web Analytics */}
+      <Analytics />
     </main>
   );
 }
