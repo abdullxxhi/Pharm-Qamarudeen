@@ -43,7 +43,7 @@ export const Screen7Celebration: React.FC<Screen7Props> = ({ onNext }) => {
         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
         className="mb-6 relative"
       >
-        <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-tr from-[#0D1B2A] to-[#07111F] border border-[#D4AF6A] flex items-center justify-center shadow-[0_0_35px_rgba(212,175,106,0.4)] animate-float-gentle">
+        <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-tr from-[#641B32] to-[#3A0D1E] border border-[#D6A85F] flex items-center justify-center shadow-[0_0_35px_rgba(214,168,95,0.4)] animate-float-gentle">
           <span className="text-4xl sm:text-5xl">🎓</span>
         </div>
       </motion.div>
@@ -55,7 +55,7 @@ export const Screen7Celebration: React.FC<Screen7Props> = ({ onNext }) => {
         transition={{ duration: 1.0, delay: 0.2 }}
         className="mb-3"
       >
-        <span className="text-[#D4AF6A] text-xs sm:text-sm tracking-[0.4em] uppercase font-medium border-b border-[#D4AF6A]/30 pb-2 inline-block">
+        <span className="text-[#D6A85F] text-xs sm:text-sm tracking-[0.4em] uppercase font-medium border-b border-[#D6A85F]/30 pb-2 inline-block">
           Chapter 07 • Celebration
         </span>
       </motion.div>
@@ -90,9 +90,9 @@ export const Screen7Celebration: React.FC<Screen7Props> = ({ onNext }) => {
               delay: 1.4 + idx * 0.7,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="px-5 py-2.5 rounded-full border border-[#D4AF6A]/40 bg-[#0D1B2A]/80 backdrop-blur-sm shadow-[0_0_20px_rgba(212,175,106,0.15)]"
+            className="px-5 py-2.5 rounded-full border border-[#D6A85F]/40 bg-[#641B32]/80 backdrop-blur-sm shadow-[0_0_20px_rgba(214,168,95,0.15)]"
           >
-            <span className="font-serif-display text-lg sm:text-2xl text-[#F7F3EA]">
+            <span className="font-serif-display text-lg sm:text-2xl text-[#FFF7E8]">
               {title}
             </span>
           </motion.div>
@@ -106,7 +106,7 @@ export const Screen7Celebration: React.FC<Screen7Props> = ({ onNext }) => {
         transition={{ duration: 1.4, delay: 4.4, ease: [0.16, 1, 0.3, 1] }}
         className="mb-12"
       >
-        <p className="font-cinzel text-xs sm:text-sm tracking-[0.3em] text-[#D4AF6A] uppercase mb-2">
+        <p className="font-cinzel text-xs sm:text-sm tracking-[0.3em] text-[#D6A85F] uppercase mb-2">
           DOCTOR OF PHARMACY
         </p>
         <h1 className="font-serif-display text-4xl sm:text-6xl md:text-7xl text-gold-gradient font-light tracking-tight">
@@ -121,7 +121,7 @@ export const Screen7Celebration: React.FC<Screen7Props> = ({ onNext }) => {
         transition={{ duration: 1, delay: 5.2 }}
         className="flex flex-col items-center gap-4"
       >
-        <p className="font-sans-clean text-xs sm:text-sm text-[#F7F3EA]/50">
+        <p className="font-sans-clean text-xs sm:text-sm text-[#FFF7E8]/60">
           ✨ Tap anywhere on the screen for sparkles ✨
         </p>
 
@@ -131,7 +131,7 @@ export const Screen7Celebration: React.FC<Screen7Props> = ({ onNext }) => {
             e.stopPropagation();
             handleNext();
           }}
-          className="mt-2 group inline-flex items-center gap-3 px-8 py-3.5 rounded-full border border-[#D4AF6A] bg-[#07111F]/90 hover:bg-[#D4AF6A]/20 text-[#F2D58A] font-sans-clean font-medium text-sm md:text-base tracking-widest uppercase transition-all duration-300 hover:scale-[1.02] shadow-[0_0_30px_rgba(212,175,106,0.3)] cursor-pointer"
+          className="mt-2 group inline-flex items-center gap-3 px-8 py-3.5 rounded-full border border-[#D6A85F] bg-[#641B32]/90 hover:bg-[#641B32] text-[#FFF7E8] font-sans-clean font-medium text-sm md:text-base tracking-widest uppercase transition-all duration-300 hover:scale-[1.02] shadow-[0_0_30px_rgba(214,168,95,0.3)] cursor-pointer"
         >
           <span>THE FINAL REVEAL</span>
           <span className="group-hover:translate-x-1 transition-transform duration-300">

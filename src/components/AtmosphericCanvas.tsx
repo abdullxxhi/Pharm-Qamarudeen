@@ -72,15 +72,15 @@ export const AtmosphericCanvas: React.FC<AtmosphericCanvasProps> = ({
 
     // Particle pool
     const particles: Particle[] = [];
-    const particleCount = stage === 7 ? 40 : 65;
-    const colors = ['#D4AF6A', '#F2D58A', '#F7F3EA', '#E2C275'];
+    const particleCount = stage >= 7 ? 45 : 55;
+    const colors = ['#D6A85F', '#FFF7E8', '#F3D9D7', '#E8C37E', '#B5873E'];
 
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.35,
-        vy: -Math.random() * 0.5 - 0.15,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: -Math.random() * 0.45 - 0.12,
         size: Math.random() * 2.2 + 0.8,
         baseAlpha: Math.random() * 0.45 + 0.15,
         alpha: Math.random() * 0.45 + 0.15,
@@ -90,56 +90,57 @@ export const AtmosphericCanvas: React.FC<AtmosphericCanvasProps> = ({
       });
     }
 
-    // Confetti pool for celebration
+    // Confetti pool for celebration (Stages 7 & 8)
     const confetti: ConfettiPiece[] = [];
     const confettiColors = [
-      '#D4AF6A', // Champagne Gold
-      '#F2D58A', // Soft Gold
-      '#F7F3EA', // Warm Ivory
-      '#0B5D4F', // Deep Emerald
-      '#C99A45', // Rich Gold
+      '#D6A85F', // Champagne Gold
+      '#FFF7E8', // Warm Cream
+      '#F3D9D7', // Soft Blush
+      '#641B32', // Wine
+      '#8A2544', // Rose Burgundy
+      '#E8C37E', // Soft Gold
     ];
 
     const spawnConfetti = (count: number, startY?: number) => {
       for (let i = 0; i < count; i++) {
-        const isRibbon = Math.random() > 0.6;
+        const isRibbon = Math.random() > 0.65;
         confetti.push({
           x: Math.random() * width,
-          y: startY !== undefined ? startY : Math.random() * -100,
-          vx: (Math.random() - 0.5) * 4,
-          vy: Math.random() * 3 + 2,
+          y: startY !== undefined ? startY : Math.random() * -60,
+          vx: (Math.random() - 0.5) * 3,
+          vy: Math.random() * 2.5 + 1.8,
           rotation: Math.random() * Math.PI * 2,
-          vRot: (Math.random() - 0.5) * 0.15,
+          vRot: (Math.random() - 0.5) * 0.1,
           scaleX: 1,
-          vScale: Math.random() * 0.08 + 0.04,
-          width: isRibbon ? Math.random() * 6 + 10 : Math.random() * 8 + 6,
-          height: isRibbon ? Math.random() * 4 + 4 : Math.random() * 8 + 6,
+          vScale: Math.random() * 0.06 + 0.03,
+          width: isRibbon ? Math.random() * 5 + 8 : Math.random() * 6 + 5,
+          height: isRibbon ? Math.random() * 3 + 3 : Math.random() * 6 + 5,
           color: confettiColors[Math.floor(Math.random() * confettiColors.length)],
-          alpha: 1,
+          alpha: 0.9,
           isRibbon,
         });
       }
     };
 
-    if (stage === 7) {
-      spawnConfetti(120, Math.random() * height * 0.5);
+    if (stage === 7 || stage === 8) {
+      spawnConfetti(stage === 8 ? 60 : 90, Math.random() * height * 0.4);
     }
 
     // Sparkle bursts
     const sparks: SparkBurst[] = [];
 
-    const createBurst = (x: number, y: number, count = 25) => {
-      const sparkColors = ['#F2D58A', '#D4AF6A', '#FFFFFF', '#6EE7B7'];
+    const createBurst = (x: number, y: number, count = 22) => {
+      const sparkColors = ['#D6A85F', '#FFF7E8', '#F3D9D7', '#FFFFFF'];
       for (let i = 0; i < count; i++) {
         const angle = Math.random() * Math.PI * 2;
-        const speed = Math.random() * 3.5 + 1.2;
-        const maxLife = Math.floor(Math.random() * 40 + 35);
+        const speed = Math.random() * 3.0 + 1.0;
+        const maxLife = Math.floor(Math.random() * 35 + 30);
         sparks.push({
           x,
           y,
           vx: Math.cos(angle) * speed,
           vy: Math.sin(angle) * speed,
-          size: Math.random() * 2.5 + 1,
+          size: Math.random() * 2.2 + 1,
           color: sparkColors[Math.floor(Math.random() * sparkColors.length)],
           alpha: 1,
           life: 0,
@@ -148,12 +149,12 @@ export const AtmosphericCanvas: React.FC<AtmosphericCanvasProps> = ({
       }
     };
 
-    // Auto fireworks in celebration stage
+    // Auto fireworks / light bursts in celebration stages
     let fireworkTimer = 0;
 
     // Interactive burst on click
     const handleCanvasClick = (e: MouseEvent) => {
-      createBurst(e.clientX, e.clientY, stage === 7 ? 40 : 18);
+      createBurst(e.clientX, e.clientY, stage >= 7 ? 30 : 16);
     };
     window.addEventListener('click', handleCanvasClick);
 
@@ -162,73 +163,60 @@ export const AtmosphericCanvas: React.FC<AtmosphericCanvasProps> = ({
     const render = () => {
       time += 0.015;
 
-      // 1. Render Atmospheric Gradient
+      // 1. Render Burgundy + Wine + Warm Cream Atmospheric Gradient
       ctx.clearRect(0, 0, width, height);
 
-      // Deep base
       const bgGrad = ctx.createRadialGradient(
         width * 0.5,
-        height * 0.45,
-        10,
+        height * 0.38,
+        15,
         width * 0.5,
         height * 0.5,
         Math.max(width, height) * 0.85
       );
 
       if (stage === 3 && activeTimelinePoint === 3) {
-        // Leadership Emerald glow
-        bgGrad.addColorStop(0, 'rgba(11, 93, 79, 0.28)');
-        bgGrad.addColorStop(0.4, 'rgba(13, 27, 42, 0.95)');
-        bgGrad.addColorStop(1, '#07111F');
+        // Leadership PMSSN: Warm Wine & Champagne Gold halo
+        bgGrad.addColorStop(0, 'rgba(214, 168, 95, 0.22)');
+        bgGrad.addColorStop(0.35, 'rgba(100, 27, 50, 0.95)');
+        bgGrad.addColorStop(1, '#3A0D1E');
       } else if (stage === 6) {
-        // Dramatic dark pioneer moment
-        bgGrad.addColorStop(0, 'rgba(212, 175, 106, 0.12)');
-        bgGrad.addColorStop(0.3, 'rgba(7, 17, 31, 0.96)');
-        bgGrad.addColorStop(1, '#030810');
-      } else if (stage === 7) {
-        // Celebratory warm gold glow
-        bgGrad.addColorStop(0, 'rgba(212, 175, 106, 0.22)');
-        bgGrad.addColorStop(0.5, 'rgba(13, 27, 42, 0.95)');
-        bgGrad.addColorStop(1, '#07111F');
+        // Prestigious Pioneer Moment: Focused golden light on deep wine
+        bgGrad.addColorStop(0, 'rgba(214, 168, 95, 0.18)');
+        bgGrad.addColorStop(0.35, 'rgba(100, 27, 50, 0.92)');
+        bgGrad.addColorStop(1, '#230713');
+      } else if (stage === 7 || stage === 8) {
+        // Grand Celebration: Warm Champagne Gold radiating through Wine and Burgundy
+        bgGrad.addColorStop(0, 'rgba(214, 168, 95, 0.22)');
+        bgGrad.addColorStop(0.4, 'rgba(100, 27, 50, 0.92)');
+        bgGrad.addColorStop(1, '#3A0D1E');
       } else {
-        // Classic midnight navy with subtle gold center
-        bgGrad.addColorStop(0, 'rgba(212, 175, 106, 0.1)');
-        bgGrad.addColorStop(0.5, 'rgba(13, 27, 42, 0.9)');
-        bgGrad.addColorStop(1, '#07111F');
+        // Classic Warm Burgundy environment
+        bgGrad.addColorStop(0, 'rgba(214, 168, 95, 0.12)');
+        bgGrad.addColorStop(0.45, 'rgba(100, 27, 50, 0.88)');
+        bgGrad.addColorStop(1, '#3A0D1E');
       }
 
       ctx.fillStyle = bgGrad;
       ctx.fillRect(0, 0, width, height);
 
-      // 2. Subtle Molecular / Pharmacy structure lines in Background (faint & elegant)
-      if (stage === 3 || stage === 6 || stage === 4) {
+      // 2. Subtle decorative celebration sparkle stars (refined & non-intrusive)
+      if (stage >= 4) {
         ctx.save();
-        ctx.strokeStyle = 'rgba(212, 175, 106, 0.05)';
-        ctx.lineWidth = 1;
-
-        // Faint hexagonal geometry
-        const hexSize = 55;
-        const centerX = width * 0.82;
-        const centerY = height * 0.35;
-        const rot = time * 0.05;
-
-        ctx.beginPath();
-        for (let i = 0; i < 6; i++) {
-          const angle = rot + (i * Math.PI) / 3;
-          const px = centerX + Math.cos(angle) * hexSize;
-          const py = centerY + Math.sin(angle) * hexSize;
-          if (i === 0) ctx.moveTo(px, py);
-          else ctx.lineTo(px, py);
-        }
-        ctx.closePath();
-        ctx.stroke();
-
-        // Connected bond
-        ctx.beginPath();
-        ctx.moveTo(centerX + Math.cos(rot) * hexSize, centerY + Math.sin(rot) * hexSize);
-        ctx.lineTo(centerX + Math.cos(rot) * (hexSize + 30), centerY + Math.sin(rot) * (hexSize + 30));
-        ctx.stroke();
-
+        ctx.fillStyle = 'rgba(214, 168, 95, 0.15)';
+        const starPositions = [
+          { x: width * 0.12, y: height * 0.22 },
+          { x: width * 0.88, y: height * 0.26 },
+          { x: width * 0.16, y: height * 0.72 },
+          { x: width * 0.84, y: height * 0.68 },
+        ];
+        starPositions.forEach((pos, idx) => {
+          const starAlpha = 0.15 + Math.sin(time * 2 + idx) * 0.08;
+          ctx.globalAlpha = starAlpha;
+          ctx.beginPath();
+          ctx.arc(pos.x, pos.y, 2, 0, Math.PI * 2);
+          ctx.fill();
+        });
         ctx.restore();
       }
 
@@ -261,20 +249,20 @@ export const AtmosphericCanvas: React.FC<AtmosphericCanvasProps> = ({
       ctx.shadowBlur = 0;
       ctx.globalAlpha = 1;
 
-      // 4. Render Celebration Confetti (Stage 7)
-      if (stage === 7) {
+      // 4. Render Celebration Confetti (Stage 7 & Stage 8)
+      if (stage >= 7) {
         fireworkTimer++;
-        if (fireworkTimer % 90 === 0) {
-          // Auto burst subtle celebratory fireworks
+        if (fireworkTimer % (stage === 8 ? 120 : 90) === 0) {
+          // Auto burst subtle celebratory sparkles
           createBurst(
-            width * (0.25 + Math.random() * 0.5),
-            height * (0.2 + Math.random() * 0.35),
-            35
+            width * (0.2 + Math.random() * 0.6),
+            height * (0.2 + Math.random() * 0.3),
+            stage === 8 ? 20 : 30
           );
         }
 
-        if (confetti.length < 90 && Math.random() < 0.3) {
-          spawnConfetti(3);
+        if (confetti.length < (stage === 8 ? 70 : 90) && Math.random() < 0.25) {
+          spawnConfetti(2);
         }
 
         for (let i = confetti.length - 1; i >= 0; i--) {

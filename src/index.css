@@ -2,17 +2,16 @@
 
 @layer base {
   :root {
-    --color-midnight: #07111f;
-    --color-deep-navy: #0d1b2a;
-    --color-champagne: #d4af6a;
-    --color-soft-gold: #f2d58a;
-    --color-warm-ivory: #f7f3ea;
-    --color-deep-emerald: #0b5d4f;
+    --color-burgundy: #3a0d1e;
+    --color-wine: #641b32;
+    --color-cream: #fff7e8;
+    --color-champagne: #d6a85f;
+    --color-blush: #f3d9d7;
   }
 
   body {
-    background-color: #07111f;
-    color: #f7f3ea;
+    background-color: #3a0d1e;
+    color: #fff7e8;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   }
 }
@@ -33,17 +32,17 @@
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-/* Custom cinematic glow and animations */
+/* Custom celebration glow and animations */
 @keyframes goldPulse {
   0%, 100% {
-    opacity: 0.4;
+    opacity: 0.45;
     transform: scale(1);
-    filter: drop-shadow(0 0 15px rgba(212, 175, 106, 0.3));
+    filter: drop-shadow(0 0 15px rgba(214, 168, 95, 0.35));
   }
   50% {
-    opacity: 0.85;
-    transform: scale(1.05);
-    filter: drop-shadow(0 0 35px rgba(242, 213, 138, 0.6));
+    opacity: 0.9;
+    transform: scale(1.04);
+    filter: drop-shadow(0 0 35px rgba(214, 168, 95, 0.65));
   }
 }
 
@@ -73,6 +72,30 @@
   }
 }
 
+@keyframes balloonFloatLeft {
+  0% {
+    transform: translateY(0) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(2deg);
+  }
+  100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+}
+
+@keyframes balloonFloatRight {
+  0% {
+    transform: translateY(0) rotate(2deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(-1.5deg);
+  }
+  100% {
+    transform: translateY(0) rotate(2deg);
+  }
+}
+
 .animate-gold-pulse {
   animation: goldPulse 4s ease-in-out infinite;
 }
@@ -87,34 +110,34 @@
 
 /* Shimmer gradient text */
 .text-gold-gradient {
-  background: linear-gradient(135deg, #f7f3ea 0%, #f2d58a 45%, #d4af6a 70%, #f7f3ea 100%);
+  background: linear-gradient(135deg, #fff7e8 0%, #d6a85f 40%, #f3d9d7 70%, #d6a85f 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gold-luxury {
-  background: linear-gradient(180deg, #ffffff 0%, #f2d58a 50%, #d4af6a 100%);
+  background: linear-gradient(180deg, #fff7e8 0%, #f3d9d7 30%, #d6a85f 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.text-emerald-gold {
-  background: linear-gradient(135deg, #6ee7b7 0%, #10b981 50%, #d4af6a 100%);
+.text-burgundy-gold {
+  background: linear-gradient(135deg, #fff7e8 0%, #d6a85f 60%, #641b32 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Editorial Aesthetic specific utility classes */
+/* Celebration and Editorial Aesthetic classes */
 .gold-glow {
-  text-shadow: 0 0 20px rgba(212, 175, 106, 0.4);
+  text-shadow: 0 0 20px rgba(214, 168, 95, 0.45);
 }
 
 .gold-glow-lg {
-  text-shadow: 0 0 35px rgba(242, 213, 138, 0.55), 0 0 15px rgba(212, 175, 106, 0.4);
+  text-shadow: 0 0 35px rgba(214, 168, 95, 0.6), 0 0 15px rgba(255, 247, 232, 0.4);
 }
 
-.emerald-glow {
-  text-shadow: 0 0 15px rgba(11, 93, 79, 0.6);
+.wine-glow {
+  text-shadow: 0 0 20px rgba(100, 27, 50, 0.7);
 }
 
 .vertical-text {
@@ -123,15 +146,15 @@
 }
 
 .cinematic-bg {
-  background: radial-gradient(circle at 70% 30%, #0d1b2a 0%, #07111f 70%);
+  background: radial-gradient(circle at 50% 30%, #641b32 0%, #3a0d1e 65%, #230713 100%);
 }
 
 .editorial-divider-h {
-  background: linear-gradient(to right, transparent, rgba(212, 175, 106, 0.45), transparent);
+  background: linear-gradient(to right, transparent, rgba(214, 168, 95, 0.5), transparent);
 }
 
 .editorial-divider-v {
-  background: linear-gradient(to bottom, transparent, rgba(212, 175, 106, 0.45), transparent);
+  background: linear-gradient(to bottom, transparent, rgba(214, 168, 95, 0.5), transparent);
 }
 
 /* Custom scrollbar */
@@ -139,12 +162,12 @@
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #07111f;
+  background: #3a0d1e;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(212, 175, 106, 0.3);
+  background: rgba(214, 168, 95, 0.35);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(212, 175, 106, 0.6);
+  background: rgba(214, 168, 95, 0.7);
 }

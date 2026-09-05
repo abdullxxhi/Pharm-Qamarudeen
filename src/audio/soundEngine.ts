@@ -46,42 +46,10 @@ class SoundEngine {
     }
   }
 
-  // Soft atmospheric pad
+  // Loop background sound removed completely per user request
   public startAtmosphere() {
-    if (this.isAmbientRunning) return;
-    this.initContext();
-    if (!this.ctx) return;
-
-    try {
-      const osc1 = this.ctx.createOscillator();
-      const osc2 = this.ctx.createOscillator();
-      const filter = this.ctx.createBiquadFilter();
-      this.ambientGain = this.ctx.createGain();
-
-      osc1.type = 'sine';
-      osc1.frequency.setValueAtTime(110, this.ctx.currentTime); // A2
-
-      osc2.type = 'triangle';
-      osc2.frequency.setValueAtTime(164.81, this.ctx.currentTime); // E3 fifth
-
-      filter.type = 'lowpass';
-      filter.frequency.setValueAtTime(320, this.ctx.currentTime);
-
-      this.ambientGain.gain.setValueAtTime(0.001, this.ctx.currentTime);
-      const targetGain = this.isMuted ? 0 : 0.035;
-      this.ambientGain.gain.exponentialRampToValueAtTime(Math.max(0.001, targetGain), this.ctx.currentTime + 3);
-
-      osc1.connect(filter);
-      osc2.connect(filter);
-      filter.connect(this.ambientGain);
-      this.ambientGain.connect(this.ctx.destination);
-
-      osc1.start();
-      osc2.start();
-      this.isAmbientRunning = true;
-    } catch {
-      // Audio fallback
-    }
+    // No continuous background audio
+    this.isAmbientRunning = false;
   }
 
   // Gentle interaction chime (soft champagne bell)

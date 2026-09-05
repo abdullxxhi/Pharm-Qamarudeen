@@ -33,7 +33,7 @@ export const Screen2Before: React.FC<Screen2Props> = ({ onNext }) => {
         transition={{ duration: 1.0, delay: 0.1 }}
         className="mb-4"
       >
-        <span className="text-[#D4AF6A] text-xs sm:text-sm tracking-[0.4em] uppercase font-medium border-b border-[#D4AF6A]/30 pb-2 inline-block">
+        <span className="text-[#D6A85F] text-xs sm:text-sm tracking-[0.4em] uppercase font-medium border-b border-[#D6A85F]/30 pb-2 inline-block">
           Chapter 02 • Reflection
         </span>
       </motion.div>
@@ -44,7 +44,7 @@ export const Screen2Before: React.FC<Screen2Props> = ({ onNext }) => {
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2, delay: 0.3 }}
-        className="font-serif-display italic text-xl sm:text-2xl md:text-3xl text-[#D4AF6A] mb-2 font-normal"
+        className="font-serif-display italic text-xl sm:text-2xl md:text-3xl text-[#D6A85F] mb-2 font-normal"
       >
         Before we get to the congratulations...
       </motion.p>
@@ -55,7 +55,7 @@ export const Screen2Before: React.FC<Screen2Props> = ({ onNext }) => {
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2, delay: 1.0 }}
-        className="font-cinzel text-lg sm:text-xl md:text-2xl tracking-wider text-[#F7F3EA] uppercase font-light mb-6 gold-glow"
+        className="font-cinzel text-lg sm:text-xl md:text-2xl tracking-wider text-[#FFF7E8] uppercase font-light mb-6 gold-glow"
       >
         let's take a second to appreciate how you got here.
       </motion.h2>
@@ -81,8 +81,8 @@ export const Screen2Before: React.FC<Screen2Props> = ({ onNext }) => {
             }}
             className={`font-sans-clean text-base sm:text-lg md:text-xl ${
               idx === reflections.length - 1
-                ? 'text-[#F7F3EA]/90 italic pt-2'
-                : 'text-[#F7F3EA]/75'
+                ? 'text-[#FFF7E8] italic pt-2 font-serif-display text-xl sm:text-2xl text-[#D6A85F]'
+                : 'text-[#FFF7E8]/80'
             }`}
           >
             {line}
@@ -101,7 +101,7 @@ export const Screen2Before: React.FC<Screen2Props> = ({ onNext }) => {
         }}
         className="mt-10 mb-12"
       >
-        <span className="inline-block px-6 py-2 rounded-full border border-[#D4AF6A]/30 bg-[#0D1B2A]/60 backdrop-blur-sm text-gold-gradient font-serif-display text-2xl sm:text-3xl md:text-4xl font-normal shadow-[0_0_20px_rgba(212,175,106,0.15)]">
+        <span className="inline-block px-7 py-2.5 rounded-full border border-[#D6A85F]/40 bg-[#641B32]/70 backdrop-blur-sm text-gold-gradient font-serif-display text-2xl sm:text-3xl md:text-4xl font-normal shadow-[0_0_25px_rgba(214,168,95,0.2)]">
           But you kept going.
         </span>
       </motion.div>
@@ -118,7 +118,7 @@ export const Screen2Before: React.FC<Screen2Props> = ({ onNext }) => {
         <button
           id="btn-keep-going"
           onClick={handleNext}
-          className="group inline-flex items-center gap-3 px-8 py-3.5 rounded-full border border-[#D4AF6A]/60 bg-[#07111F]/80 hover:bg-[#D4AF6A]/15 text-[#F2D58A] font-sans-clean font-medium text-sm md:text-base tracking-widest uppercase transition-all duration-300 hover:border-[#F2D58A] shadow-[0_0_20px_rgba(212,175,106,0.2)] hover:shadow-[0_0_30px_rgba(212,175,106,0.4)] cursor-pointer"
+          className="group inline-flex items-center gap-3 px-8 py-3.5 rounded-full border border-[#D6A85F]/60 bg-[#641B32]/80 hover:bg-[#641B32] text-[#FFF7E8] font-sans-clean font-medium text-sm md:text-base tracking-widest uppercase transition-all duration-300 hover:border-[#FFF7E8] shadow-[0_0_20px_rgba(214,168,95,0.25)] hover:shadow-[0_0_30px_rgba(214,168,95,0.45)] cursor-pointer"
         >
           <span>KEEP GOING</span>
           <span className="group-hover:translate-x-1.5 transition-transform duration-300">

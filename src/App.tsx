@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import { Analytics } from '@vercel/analytics/react';
 import type { Stage } from './types';
 import { AtmosphericCanvas } from './components/AtmosphericCanvas';
+import { CelebrationBalloons } from './components/CelebrationBalloons';
 import { JourneyHUD } from './components/JourneyHUD';
 import { Screen1Entrance } from './components/stages/Screen1Entrance';
 import { Screen2Before } from './components/stages/Screen2Before';
@@ -50,27 +51,30 @@ export default function App() {
   }, [stage, maxReachedStage]);
 
   return (
-    <main className="relative min-h-screen w-full bg-[#07111F] text-[#F7F3EA] overflow-hidden select-none">
-      {/* Editorial Cinematic Radial Background */}
+    <main className="relative min-h-screen w-full bg-[#3A0D1E] text-[#FFF7E8] overflow-hidden select-none">
+      {/* Editorial Celebration Radial Background */}
       <div className="absolute inset-0 cinematic-bg pointer-events-none" />
 
       {/* Editorial Architectural Watermark */}
-      <div className="absolute -left-6 sm:-left-4 top-1/2 -translate-y-1/2 opacity-[0.05] sm:opacity-[0.08] pointer-events-none select-none z-0">
-        <span className="text-[140px] sm:text-[220px] lg:text-[280px] font-bold tracking-tighter leading-none text-[#F7F3EA]">
+      <div className="absolute -left-6 sm:-left-4 top-1/2 -translate-y-1/2 opacity-[0.04] sm:opacity-[0.06] pointer-events-none select-none z-0">
+        <span className="text-[140px] sm:text-[220px] lg:text-[280px] font-bold tracking-tighter leading-none text-[#FFF7E8]">
           2026
         </span>
       </div>
 
       {/* Editorial Vertical Side Accent Indicator */}
       <div className="hidden lg:flex absolute left-6 top-1/2 -translate-y-1/2 flex-col items-center gap-6 pointer-events-none z-20">
-        <div className="w-px h-20 bg-gradient-to-b from-[#D4AF6A] to-transparent" />
-        <span className="vertical-text text-[10px] tracking-[0.5em] uppercase text-[#F7F3EA]/40">
+        <div className="w-px h-20 bg-gradient-to-b from-[#D6A85F] to-transparent" />
+        <span className="vertical-text text-[10px] tracking-[0.5em] uppercase text-[#FFF7E8]/40">
           {stage === 8 ? 'The Reveal' : `Chapter 0${stage}`}
         </span>
       </div>
 
       {/* Dynamic Cinematic Canvas Background */}
       <AtmosphericCanvas stage={stage} activeTimelinePoint={activeTimelinePoint} />
+
+      {/* Elegant 3D Celebration Balloons that build up throughout the journey */}
+      <CelebrationBalloons stage={stage} />
 
       {/* Floating HUD with Audio Controls & Subtle Journey Indicator */}
       <JourneyHUD
